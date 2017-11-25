@@ -501,12 +501,6 @@ public class ExileListenerTest {
 		when(config.canPerform(ExileRule.KILL_PETS)).thenReturn(false);
 		dut.onPlayerDamage(e);
 		assertTrue(e.isCancelled());
-		
-		when(pearlApi.isMythicMob(pet)).thenReturn(true);
-		e = new EntityDamageByEntityEvent(player, pet, null, modifiers, modifierFunctions);
-		when(config.canPerform(ExileRule.KILL_PETS)).thenReturn(false);
-		dut.onPlayerDamage(e);
-		assertFalse(e.isCancelled());
 	}
 	
 	@Test

@@ -129,12 +129,6 @@ public interface ExilePearlApi extends Plugin, PearlAccess, PearlLogger, PlayerP
 	boolean isCombatTagEnabled();
 	
 	/**
-	 * Gets whether MythicMobs hooks are enabled
-	 * @return True if it is enabled
-	 */
-	boolean isMythicMobsEnabled();
-	
-	/**
 	 * Checks if a location is inside the world border
 	 * @param location the location to check
 	 * @return true if the location is inside the border
@@ -154,13 +148,6 @@ public interface ExilePearlApi extends Plugin, PearlAccess, PearlLogger, PlayerP
 	 * @return list of bastions the player is inside that they shouldn't be
 	 */
 	List<BastionWrapper> getPlayerInUnpermittedBastion(Player player);
-	
-	/**
-	 * Gets whether an entity is a Mythic Mob entity
-	 * @param entity the entity to check
-	 * @return true if it is a mythic mob
-	 */
-	boolean isMythicMob(Entity entity);
 	
 	/**
 	 * Gets the clock instance

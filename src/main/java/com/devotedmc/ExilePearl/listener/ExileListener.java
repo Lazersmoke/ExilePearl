@@ -206,11 +206,6 @@ public class ExileListener extends RuleListener implements Configurable {
 			return;
 		}
 		
-		// Let players kill mythic mobs
-		if (pearlApi.isMythicMob(e.getEntity())) {
-			return;
-		}
-		
 		LivingEntity living = (LivingEntity)e.getEntity();
 		String name = living.getCustomName();
 		
@@ -252,11 +247,6 @@ public class ExileListener extends RuleListener implements Configurable {
 		}
 		
 		if (!(e.getEntity() instanceof LivingEntity)) {
-			return;
-		}
-		
-		// Let players kill mythic mobs
-		if (pearlApi.isMythicMob(e.getEntity())) {
 			return;
 		}
 		
