@@ -163,6 +163,10 @@
 			<id>byteflux-repo</id>
 			<url>http://repo.byteflux.net/repository/maven-releases/</url>
 		</repository>
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+		</repository>
 	</repositories>
 
 	<profiles>
