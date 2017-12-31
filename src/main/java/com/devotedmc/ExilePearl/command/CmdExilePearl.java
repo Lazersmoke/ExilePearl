@@ -37,6 +37,7 @@ public class CmdExilePearl extends PearlCommand {
 		addSubCommand(cmdBcastConfirm);
 		addSubCommand(cmdBcastSilence);
 		addSubCommand(new CmdSummon(plugin));
+		addSubCommand(new CmdSummonConfirm(plugin));
 		addSubCommand(new CmdReturn(plugin));
 		
 		// Admin commands

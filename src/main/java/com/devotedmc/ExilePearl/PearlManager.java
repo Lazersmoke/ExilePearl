@@ -13,7 +13,7 @@ public interface PearlManager extends PearlAccess {
 	 * Performs a health decay operation on all pearls
 	 */
 	void decayPearls();
-	
+
 	/**
 	 * Adds a pearl broadcast request for a player
 	 * @param player The player requested
@@ -33,4 +33,18 @@ public interface PearlManager extends PearlAccess {
 	 * @param player The player to remove
 	 */
 	void removeBroadcastRequest(Player player);
+
+	/**
+	 * Requests the player in the pearl to be summoned
+	 * @param summoner The player requesting the summon
+	 * @param pearl The pearl instance
+	 */
+	void requestSummon(Player summoner,ExilePearl pearl);
+	
+	/**
+	 * Checks if the given pearl has been requested to summon
+	 * @param pearl The pearl instance
+	 * @return The player that summoned the pearl, or null for no summon requested
+	 */
+	Player getSummoner(ExilePearl pearl);
 }

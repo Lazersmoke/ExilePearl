@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -23,6 +24,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import com.devotedmc.ExilePearl.ExilePearl;
 import com.devotedmc.ExilePearl.ExilePearlApi;
@@ -56,6 +59,8 @@ final class CorePearlManager implements PearlManager {
 	
 	private final Map<UUID, ExilePearl> pearls = new HashMap<UUID, ExilePearl>();
 	private final Map<UUID, ExilePearl> bcastRequests = new HashMap<UUID, ExilePearl>();
+        // Maps every summon request to the task to remove it and the summoner's UUID
+	private final Map<ExilePearl,SimpleEntry<UUID, BukkitTask>> summonRequests = new HashMap<ExilePearl,SimpleEntry<UUID,BukkitTask>>();
 	
 	
 	/**
@@ -386,7 +391,25 @@ final class CorePearlManager implements PearlManager {
 			bcastRequests.remove(uid);
 		}
 	}
-	
+
+	@Override
+	public void requestSummon(Player player, ExilePearl pearl) {
+		SimpleEntry<UUID,BukkitTask> entry = new SimpleEntry<UUID,BukkitTask>(player.getUniqueId(),Bukkit.getScheduler().runTaskLaterAsynchronously(pearlApi,() -> summonRequests.remove(pearl),20L * 60L));
+		summonRequests.put(pearl,entry);
+	}
+
+	@Override
+	public Player getSummoner(ExilePearl pearl) {
+		SimpleEntry<UUID,BukkitTask> entry = summonRequests.remove(pearl);
+		if(entry == null) {
+			return null;
+		}
+                // Remove the removal task to prevent accidental double removal
+                entry.getValue().cancel();
+		// Null if offline
+		return Bukkit.getPlayer(entry.getKey());
+	}
+
 	@Override
 	public boolean summonPearl(ExilePearl pearl, Player summoner) {
 		if(pearl.getPearlType() == PearlType.PRISON && pearl.getPlayer().isOnline()

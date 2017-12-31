@@ -9,10 +9,10 @@ public class CmdPearlBroadcastConfirm extends PearlCommand {
 
 	public CmdPearlBroadcastConfirm(ExilePearlApi pearlApi) {
 		super(pearlApi);
-		this.aliases.add("confirm");
+		this.aliases.add("accept");
 
 		this.senderMustBePlayer = true;
-		this.setHelpShort("Confirms a pearl broadcast request.");
+		this.setHelpShort("Accept a pearl broadcast request.");
 	}
 
 	@Override
