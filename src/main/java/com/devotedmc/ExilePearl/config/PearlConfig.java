@@ -152,5 +152,11 @@ public interface PearlConfig extends MySqlConfig, DocumentConfig {
 	
 	Set<RepairMaterial> getUpgradeMaterials();
 
+	/**
+	 * Gets whether summoning is enabled
+	 * @return true if summoning is enabled
+	 */
+	boolean allowSummoning();
+
 	boolean allowPearlStealing();
 }

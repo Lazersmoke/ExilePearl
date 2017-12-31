@@ -50,5 +50,6 @@ public class Lang
 	public static final String onlyExiledPlayers = "<i>Only exiled players can do that.";
 	public static final String suicideInSeconds = "<n>You will suicide in %d seconds.";
 	public static final String suicideCancelled = "<i>Your suicide has been cancelled because you moved.";
+	public static final String summoningNotEnabled = "<b>Pearl summoning is not enabled.";
 	
 }

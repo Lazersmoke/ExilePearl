@@ -69,6 +69,9 @@
 # - The materials used to upgrade pearls from exile to prison
 #   The repair value is how many are required
 #
+# pearls.allow_summoning
+# - Whether or not prison pearled players can be summoned
+#
 # pearls.allow_pearl_stealing
 # - Whether or not prison pearls can be stolen by killing a summoned player
 # 
@@ -260,6 +263,7 @@ pearls:
       repair: 1
       lore:
        - This is used to upgrade exile pearls to prison pearls
+  allow_summoning: true
   allow_pearl_stealing: true
 help_item:
   enabled: true

@@ -16,11 +16,17 @@ public class CmdSummon extends PearlCommand {
 	
 	@Override
 	public void perform() {
+		if(!plugin.getPearlConfig().allowSummoning()) {
+			msg(Lang.summoningNotEnabled);
+			return;
+		}
+
 		ExilePearl pearl = plugin.getPearlFromItemStack(player().getInventory().getItemInMainHand());
 		if(pearl == null) {
 			msg(Lang.pearlMustBeHoldingPearl);
 			return;
 		}
+
 
 		if(plugin.summonPearl(pearl, player())) {
 			msg(Lang.pearlSummoned, pearl.getPlayerName());
