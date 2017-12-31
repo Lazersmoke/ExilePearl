@@ -31,7 +31,7 @@ public class CmdSummon extends PearlCommand {
 			msg("<b>You can only do that with prion pearls.");
 			return;
 		}
-		if(pearl.getPlayer() == null) {
+		if(pearl.getPlayer() == null || !pearl.getPlayer().isOnline()) {
 			msg("<b>That player is offline, and can't be summoned.");
 			return;
 		}
