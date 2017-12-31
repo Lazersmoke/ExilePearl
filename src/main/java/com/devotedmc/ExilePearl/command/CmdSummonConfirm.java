@@ -33,14 +33,20 @@ public class CmdSummonConfirm extends PearlCommand {
 		Player summoner = plugin.getPearlManager().getSummoner(pearl);
 		if(summoner == null) {
 			msg(Lang.noSummonRequested);
+			return;
+		}
+		
+		if(!summoner.isOnline()) {
+			msg("<c>%s <b> is offline, so you couldn't be summoned.", summoner.getName());
+			return;
+		}
+		
+		if(plugin.summonPearl(pearl, summoner)) {
+			msg(summoner,Lang.pearlSummoned, pearl.getPlayerName());
+			msg(Lang.pearlYouWereSummoned, summoner.getName());
 		} else {
-			if(plugin.summonPearl(pearl, summoner)) {
-				msg(summoner,Lang.pearlSummoned, pearl.getPlayerName());
-				msg(Lang.pearlYouWereSummoned, summoner.getName());
-			} else {
-				msg(summoner,Lang.pearlCantSummon);
-				msg("<b>Summon failed.");
-			}
+			msg(summoner,Lang.pearlCantSummon);
+			msg("<b>Summon failed.");
 		}
 	}
 }
