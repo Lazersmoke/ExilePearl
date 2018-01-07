@@ -1,0 +1,2 @@
+# Minimal java/maven travis config
+language: java
